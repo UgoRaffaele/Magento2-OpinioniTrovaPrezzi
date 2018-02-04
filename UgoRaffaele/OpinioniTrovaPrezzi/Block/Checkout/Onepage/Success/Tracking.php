@@ -35,14 +35,14 @@ class Tracking extends \Magento\Framework\View\Element\Template {
 	
 	public function getOrderID()
 	{
-		$lastorderId = $this->checkoutSession->getLastOrderId();
-		return $lastorderId;
+		$orderId = $this->checkoutSession->getLastRealOrderId();
+		return $orderId;
 	}
 	
 	public function getCustomerEmail()
 	{
-		$lastorderId = $this->checkoutSession->getLastOrder()->getCustomerEmail();
-		return $lastorderId;
+		$customerEmail = $this->checkoutSession->getLastRealOrder()->getCustomerEmail();
+		return $customerEmail;
 	}
 	
 	public function getProducts()

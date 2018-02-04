@@ -1,5 +1,6 @@
 <?php if($this->isModuleEnabled()): ?>
 	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript" src="https://tracking.trovaprezzi.it/javascripts/tracking.min.js"></script>
 	<script type="text/javascript">
 		window._tt = window._tt || [];
@@ -7,11 +8,10 @@
 		window._tt.push({event: "setOrderId", order_id: '<?php echo $this->getOrderID(); ?>' });
 		window._tt.push({event: "setEmail", email: '<?php echo $this->getCustomerEmail(); ?>' });
 	<?php foreach($this->getProducts() as $product) { ?>
-		window._tt.push({event: "addItem", sku: '<?php echo $product->getData('sku'); ?>', product_name: '<?php echo str_replace("'", "", $product->getData('name'); ?>' });
+		window._tt.push({event: "addItem", sku: '<?php echo $product->getData('sku'); ?>', product_name: '<?php echo str_replace("'", "", $product->getData('name')); ?>' });
 	<?php } ?>
 		window._tt.push({event: "setAmount", amount: '<?php echo $this->getOrderAmount(); ?>' });
 		window._tt.push({event: "orderSubmit"});
 	</script>
 	
 <?php endif; ?>
-
